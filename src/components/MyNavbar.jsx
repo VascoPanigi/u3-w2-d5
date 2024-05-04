@@ -12,7 +12,7 @@ const MyNavbar = () => {
   return (
     <>
       <Navbar expand="lg">
-        <Container className="justify-content-between">
+        <Container className="mx-auto justify-content-between" style={{ maxWidth: "95%" }}>
           <div className="d-flex">
             <Nav href="#home" className="text-white me-4">
               <div className="icon-container d-flex justify-content-center align-items-center">

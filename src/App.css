@@ -77,3 +77,7 @@ main {
 .degrees-section p {
   font-size: 2rem;
 }
+
+.main-div {
+  margin-inline: 3rem;
+}

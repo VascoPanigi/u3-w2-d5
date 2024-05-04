@@ -95,8 +95,8 @@ const ResultPage = () => {
   }, [coordinates]);
 
   return (
-    <Container>
-      <Row>
+    <div className="main-div">
+      <Row className="mt-5">
         <Col xs={12} lg={4}>
           {todaysForecast && <TodaysWeatherCard todaysForecast={todaysForecast} />}
         </Col>
@@ -119,7 +119,7 @@ const ResultPage = () => {
           </Row>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
