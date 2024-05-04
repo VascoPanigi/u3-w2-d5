@@ -16,7 +16,8 @@ const NextDaysCard = ({ nextDaysForecast, selectedCard, setSelectedCard }) => {
   return (
     <Col
       xs={selectedCard === nextDaysForecast ? 8 : 4}
-      lg={selectedCard === nextDaysForecast ? 4 : 2}
+      md={selectedCard === nextDaysForecast ? 6 : 3}
+      xl={selectedCard === nextDaysForecast ? 4 : 2}
       className="next-days-card"
     >
       <Card onClick={handleCardClick}>

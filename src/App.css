@@ -71,5 +71,9 @@ main {
 }
 
 .next-days-card .card-title {
-  color: blue;
+  font-size: 1.5rem;
+}
+
+.degrees-section p {
+  font-size: 2rem;
 }
