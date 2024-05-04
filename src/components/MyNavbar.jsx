@@ -1,32 +1,46 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Stack } from "react-bootstrap";
 import SearchPage from "./SearchPage";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
+import { BiGridAlt, BiBell } from "react-icons/bi";
+import profilePic from "../assets/icons/pofilepic.jpg";
 
 const MyNavbar = () => {
   const location = useLocation();
-  const isSearchPage = location.pathname === "/search";
+  const isSearchPage = location.pathname === "/";
   console.log(isSearchPage);
 
   return (
     <>
       <Navbar expand="lg">
-        <Container>
-          <Navbar.Brand href="#home" className="text-white">
-            React-Bootstrap
-          </Navbar.Brand>
+        <Container className="justify-content-between">
+          <div className="d-flex">
+            <Nav href="#home" className="text-white me-4">
+              <div className="icon-container d-flex justify-content-center align-items-center">
+                <BiGridAlt className="icons" style={{ color: "#f5f5f1", width: "20px", height: "20px" }} />
+              </div>
+            </Nav>
+            <Nav href="#home" className="text-white">
+              <div className="icon-container d-flex justify-content-center align-items-center">
+                <BiBell className="icons" style={{ color: "#f5f5f1", width: "20px", height: "20px" }} />
+              </div>
+            </Nav>
+            {/* non voglio avere la search bar sull navbar se sono nella searchpage */}
+            {!isSearchPage && <SearchPage className="mt-0" />}
+          </div>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          {/* non voglio avere la search bar sull navbar se sono nella searchpage */}
-          {!isSearchPage && <SearchPage className="mt-0" />}
-
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto ">
-              <Nav.Link href="#home" className="text-white">
+          <Navbar.Collapse id="basic-navbar-nav" className="text-thite">
+            <Nav className="ms-auto ">
+              <NavLink to="/" className="nav-link text-white">
                 Home
-              </Nav.Link>
-              <Nav.Link href="#link" className="text-white">
+              </NavLink>
+              <NavLink to="/gabibbo" className="nav-link text-white">
                 About
-              </Nav.Link>
+              </NavLink>
+              <NavLink to="/gabibbo" className="nav-link text-white">
+                <img src={profilePic} alt="profile pic" className="profile-picture" />
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

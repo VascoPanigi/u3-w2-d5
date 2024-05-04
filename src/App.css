@@ -40,3 +40,36 @@
 main {
   min-height: 100vh;
 }
+
+.icon-container {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  background-color: #222224;
+}
+.icon-container:hover {
+  background-color: #4d4d52;
+}
+
+.app-container {
+  background-color: #111015;
+}
+
+.card {
+  background-color: #222224;
+  color: #e1e1eb;
+}
+
+.card:hover {
+  background-color: #4d4d52;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.next-days-card .card-title {
+  color: blue;
+}

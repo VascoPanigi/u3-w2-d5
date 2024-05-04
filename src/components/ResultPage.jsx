@@ -7,7 +7,8 @@ import NextDaysCard from "./NextDaysCard";
 const ResultPage = () => {
   const [coordinates, setCoordinates] = useState("");
   const [todaysForecast, setTodaysForecast] = useState("");
-  const [nextDaysForecast, setNextDaysForecast] = useState(""); // New state for next day's forecast
+  const [nextDaysForecast, setNextDaysForecast] = useState("");
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const location = useParams();
   const cityName = location.cityName;
@@ -67,7 +68,6 @@ const ResultPage = () => {
   const fetchNextDaysForecast = async () => {
     try {
       const response = await fetch(
-        // Adjust the API endpoint for next day's forecast
         `https://api.openweathermap.org/data/2.5/forecast?${coordinates}&units=metric&appid=74edd4f81109361aa3b9b9f20b577e89`
       );
 
@@ -97,17 +97,25 @@ const ResultPage = () => {
   return (
     <Container>
       <Row>
-        <Col xs={4}>{todaysForecast && <TodaysWeatherCard todaysForecast={todaysForecast} />}</Col>
-        <Col xs={8}>
+        <Col xs={12} lg={4}>
+          {todaysForecast && <TodaysWeatherCard todaysForecast={todaysForecast} />}
+        </Col>
+        <Col xs={12} lg={8}>
           <Row>
             {nextDaysForecast &&
               nextDaysForecast.list
                 .filter((day, index, self) => {
                   const currentDate = day.dt_txt.split(" ")[0];
-                  console.log(day);
                   return index === self.findIndex((d) => d.dt_txt.split(" ")[0] === currentDate);
                 })
-                .map((day, index) => <NextDaysCard key={index} nextDaysForecast={day} />)}
+                .map((day, index) => (
+                  <NextDaysCard
+                    key={index}
+                    nextDaysForecast={day}
+                    selectedCard={selectedCard}
+                    setSelectedCard={setSelectedCard}
+                  />
+                ))}
           </Row>
         </Col>
       </Row>

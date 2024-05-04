@@ -8,7 +8,7 @@ import ResultPage from "./components/ResultPage";
 
 function App() {
   return (
-    <div className="bg-dark">
+    <div className="app-container">
       <BrowserRouter>
         <header>
           <MyNavbar />
@@ -16,7 +16,7 @@ function App() {
 
         <main>
           <Routes>
-            <Route path="/search" element={<SearchPage />} />
+            <Route path="/" element={<SearchPage />} />
             <Route path="/results/:cityName" element={<ResultPage />} />
             <Route path="*" element={<Belandi />} />
           </Routes>
