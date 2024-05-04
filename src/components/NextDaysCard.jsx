@@ -22,7 +22,10 @@ const NextDaysCard = ({ nextDaysForecast, selectedCard, setSelectedCard }) => {
     >
       <Card onClick={handleCardClick}>
         <Card.Body className="d-flex flex-column align-items-center">
-          <Card.Title>{getDayOfWeek(nextDaysForecast.dt)}</Card.Title>
+          <div className="next-day-card-title">
+            <Card.Title>{getDayOfWeek(nextDaysForecast.dt)}</Card.Title>
+          </div>
+          <div className="next-day-card-line"></div>
           <Card.Img
             src={`https://openweathermap.org/img/wn/${nextDaysForecast.weather[0].icon}@4x.png`}
             alt="temperature icon"

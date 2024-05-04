@@ -97,10 +97,10 @@ const ResultPage = () => {
   return (
     <div className="main-div">
       <Row className="mt-5">
-        <Col xs={12} lg={4}>
+        <Col xs={12} lg={3} className="left-side-results-container">
           {todaysForecast && <TodaysWeatherCard todaysForecast={todaysForecast} />}
         </Col>
-        <Col xs={12} lg={8}>
+        <Col xs={12} lg={9}>
           <Row>
             {nextDaysForecast &&
               nextDaysForecast.list

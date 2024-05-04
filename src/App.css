@@ -81,3 +81,12 @@ main {
 .main-div {
   margin-inline: 3rem;
 }
+
+.left-side-results-container {
+  border-right: 1px solid #4d4d52;
+}
+
+.next-day-card-line {
+  border-bottom: 1px solid #4d4d52;
+  width: 90%;
+}
