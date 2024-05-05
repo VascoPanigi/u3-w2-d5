@@ -84,6 +84,23 @@ const ResultPage = () => {
     }
   };
 
+  // const fetchMap = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://tile.openweathermap.org/map/precipitation_new/1/1/1.png?appid=74edd4f81109361aa3b9b9f20b577e89`
+  //     );
+
+  //     if (!response.ok) {
+  //       throw new Error("Error during fetching");
+  //     }
+
+  //     const fetchedMap = await response.body();
+  //     console.log(fetchedMap);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   useEffect(() => {
     fetchCoordinates();
   }, []);
@@ -92,6 +109,7 @@ const ResultPage = () => {
     if (coordinates) {
       fetchTodaysForecast();
       fetchNextDaysForecast();
+      // fetchMap();
     }
   }, [coordinates]);
 
