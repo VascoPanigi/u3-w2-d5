@@ -9,6 +9,7 @@ const ResultPage = () => {
   const [todaysForecast, setTodaysForecast] = useState("");
   const [nextDaysForecast, setNextDaysForecast] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
+  const [isBigger, setIsBigger] = useState(false);
 
   const location = useParams();
   const cityName = location.cityName;
@@ -120,6 +121,8 @@ const ResultPage = () => {
                     nextDaysForecast={day}
                     selectedCard={selectedCard}
                     setSelectedCard={setSelectedCard}
+                    isBigger={isBigger}
+                    setIsBigger={setIsBigger}
                   />
                 ))}
           </Row>
