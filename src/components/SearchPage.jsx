@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Form, FormControl, Container, Card } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -11,7 +11,11 @@ const SearchPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // fetchCoordinates();
+    navigate(`/results/${searchValue}`);
+  };
+
+  const handleSubmitOnNav = (e) => {
+    e.preventDefault();
     navigate(`/results/${searchValue}`);
   };
 
@@ -40,18 +44,13 @@ const SearchPage = () => {
             </Form>
           </Card.Body>
         </Card>
-        // <Container>
-        //
-        //
-        //
-        // </Container>
       )}
 
       {/* searchbar for Navbar */}
 
       {!isSearchPage && (
         <Container>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmitOnNav}>
             <FormControl
               type="text"
               placeholder="Search a city"

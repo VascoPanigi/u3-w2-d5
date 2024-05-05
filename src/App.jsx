@@ -5,8 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Belandi from "./components/Belandi";
 import MyNavbar from "./components/MyNavbar";
 import ResultPage from "./components/ResultPage";
+import { useState } from "react";
 
 function App() {
+  const [shouldRefresh, setShouldRefresh] = useState(false);
+
   return (
     <div className="app-container">
       <BrowserRouter>

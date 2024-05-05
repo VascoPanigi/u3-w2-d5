@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Card, Col } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Card, Col, Row } from "react-bootstrap";
 
 const NextDaysCard = ({ nextDaysForecast, selectedCard, setSelectedCard }) => {
-  // const [isBigger, setIsBigger] = useState(false);
+  const [isBigger, setIsBigger] = useState(false);
 
   function getDayOfWeek(timestamp) {
     const day = new Date(timestamp * 1000);
@@ -11,7 +11,13 @@ const NextDaysCard = ({ nextDaysForecast, selectedCard, setSelectedCard }) => {
 
   const handleCardClick = () => {
     setSelectedCard((prevSelectedCard) => (prevSelectedCard === nextDaysForecast ? null : nextDaysForecast));
+    setIsBigger(!isBigger);
   };
+
+  useEffect(() => {
+    console.log("isBigger:", isBigger);
+    console.log("selectedCard:", selectedCard);
+  }, [isBigger, selectedCard]);
 
   return (
     <Col
@@ -26,11 +32,40 @@ const NextDaysCard = ({ nextDaysForecast, selectedCard, setSelectedCard }) => {
             <Card.Title>{getDayOfWeek(nextDaysForecast.dt)}</Card.Title>
           </div>
           <div className="next-day-card-line"></div>
-          <Card.Img
-            src={`https://openweathermap.org/img/wn/${nextDaysForecast.weather[0].icon}@4x.png`}
-            alt="temperature icon"
-          />
-          <Card.Text>{nextDaysForecast.main.temp}°C</Card.Text>
+          {!isBigger && (
+            <>
+              <Card.Img
+                src={`https://openweathermap.org/img/wn/${nextDaysForecast.weather[0].icon}@4x.png`}
+                alt="temperature icon"
+              />
+              <Card.Text>{nextDaysForecast.main.temp}°C</Card.Text>
+            </>
+          )}
+
+          {isBigger && (
+            <>
+              <Row className="d-flex">
+                <Col xs={6}>
+                  <Card.Text className="big-temp">{Math.floor(nextDaysForecast.main.temp)}°C</Card.Text>
+                  <Card.Text>{nextDaysForecast.weather[0].description}</Card.Text>
+                  <Card.Text>
+                    Feels like: <span className="weather-data">{nextDaysForecast.main.feels_like}°C</span>
+                  </Card.Text>
+                  <Card.Text>
+                    Humidity: <span className="weather-data">{nextDaysForecast.main.humidity}%</span>
+                  </Card.Text>
+                </Col>
+                <Col xs={6}>
+                  <Card.Img
+                    src={`https://openweathermap.org/img/wn/${nextDaysForecast.weather[0].icon}@4x.png`}
+                    alt="temperature icon"
+                    style={{ width: "90%" }}
+                  />
+                </Col>
+              </Row>
+              <Card.Text>{}</Card.Text>
+            </>
+          )}
           {/*<Card.Text>{nextDaysForecast.description}</Card.Text>
           <Card.Text>{nextDaysForecast.humidity}</Card.Text>
           <Card.Text>{nextDaysForecast.windSpeed}</Card.Text> */}

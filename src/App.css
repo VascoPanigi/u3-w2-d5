@@ -82,11 +82,19 @@ main {
   margin-inline: 3rem;
 }
 
-.left-side-results-container {
+.vertical-rule {
   border-right: 1px solid #4d4d52;
 }
 
 .next-day-card-line {
   border-bottom: 1px solid #4d4d52;
   width: 90%;
+}
+
+.big-temp {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.weather-data {
+  font-weight: 600;
 }

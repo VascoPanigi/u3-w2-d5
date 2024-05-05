@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import TodaysWeatherCard from "./TodaysWeatherCard";
 import NextDaysCard from "./NextDaysCard";
@@ -97,16 +97,22 @@ const ResultPage = () => {
   return (
     <div className="main-div">
       <Row className="mt-5">
-        <Col xs={12} lg={3} className="left-side-results-container">
+        <Col xs={12} lg={3} className="left-side-results-container d-sm-flex justify-content-sm-center d-lg-block">
           {todaysForecast && <TodaysWeatherCard todaysForecast={todaysForecast} />}
         </Col>
         <Col xs={12} lg={9}>
           <Row>
             {nextDaysForecast &&
               nextDaysForecast.list
-                .filter((day, index, self) => {
-                  const currentDate = day.dt_txt.split(" ")[0];
-                  return index === self.findIndex((d) => d.dt_txt.split(" ")[0] === currentDate);
+                .filter((day) => {
+                  // console.log(day);
+
+                  // const currentDate = day.dt_txt.split(" ")[0];
+                  // console.log(currentDate);
+
+                  if (day.dt_txt.includes("12:00:00")) {
+                    return day;
+                  }
                 })
                 .map((day, index) => (
                   <NextDaysCard
